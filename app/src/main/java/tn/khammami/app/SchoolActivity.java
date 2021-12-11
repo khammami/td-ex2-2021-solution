@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.squareup.picasso.Picasso;
+
 public class SchoolActivity extends AppCompatActivity {
     public static String SCHOOL_NAME_KEY = "school_name";
     public static String SCHOOL_DESCRIPTION_KEY = "school_description";
@@ -24,7 +26,7 @@ public class SchoolActivity extends AppCompatActivity {
         if (extras != null) {
             String schoolName = extras.getString(SCHOOL_NAME_KEY, "");
             String schoolDescription = extras.getString(SCHOOL_DESCRIPTION_KEY, "");
-            //int schoolLogo = extras.getInt(SCHOOL_LOGO_KEY, 0);
+            String schoolLogo = extras.getString(SCHOOL_LOGO_KEY, "");
 
             if (!schoolName.isEmpty()) {
                 schoolNameTextView.setText(schoolName);
@@ -35,9 +37,9 @@ public class SchoolActivity extends AppCompatActivity {
             if (!schoolDescription.isEmpty()) {
                 schoolDescriptionTextView.setText(schoolDescription);
             }
-            /*if (schoolLogo != 0) {
-                schoolLogoImageView.setImageResource(schoolLogo);
-            }*/
+            if (!schoolLogo.isEmpty()) {
+                Picasso.get().load(schoolLogo).into(schoolLogoImageView);
+            }
         }
     }
 }

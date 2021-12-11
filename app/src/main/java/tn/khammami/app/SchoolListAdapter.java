@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class SchoolListAdapter extends RecyclerView.Adapter<SchoolViewHolder> {
@@ -29,7 +31,7 @@ public class SchoolListAdapter extends RecyclerView.Adapter<SchoolViewHolder> {
 
         holder.name.setText(mSchool.getName());
         holder.description.setText(mSchool.getDescription());
-        //holder.logo.setImageResource(mSchool.getLogo());
+        Picasso.get().load(mSchool.getLogo()).into(holder.logo);
 
         holder.setAdapterClickListener(schoolClickListener);
     }
